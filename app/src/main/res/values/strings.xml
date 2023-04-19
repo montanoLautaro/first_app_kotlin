@@ -6,4 +6,6 @@
     <string name="weight">Peso</string>
     <string name="age">Edad</string>
     <string name="calculate">Calcular</string>
+    <string name="todo_tittle">TODO App.</string>
+    <string name="todo_category">Categorias</string>
 </resources>

@@ -3,25 +3,39 @@ package com.example.firstapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.widget.AppCompatButton
 import com.example.firstapp.imccalculator.ImcCalculatorActivity
 import com.example.firstapp.nameApp.FirstAppActivity
+import com.example.firstapp.databinding.ActivityMenuBinding
+import com.example.firstapp.todoapp.TodoActivity
 
 
 class MenuActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMenuBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_menu)
-        val btnSaludoApp = findViewById<AppCompatButton>(R.id.btnSaludoApp)
-        val btnImcApp = findViewById<AppCompatButton>(R.id.btnImcApp)
+        binding = ActivityMenuBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        btnSaludoApp.setOnClickListener {
+
+        binding.btnSaludoApp.setOnClickListener {
             navigateToSaludoApp()
         }
 
-        btnImcApp.setOnClickListener{
+        binding.btnImcApp.setOnClickListener{
             navigateToImcApp()
         }
+
+        binding.btnTODO.setOnClickListener {
+            navigateToTODO()
+        }
+
+
+    }
+
+    private fun navigateToTODO() {
+        val intent = Intent(this, TodoActivity::class.java)
+        startActivity(intent)
     }
 
     private fun navigateToImcApp() {
