@@ -6,6 +6,7 @@ import android.os.Bundle
 import com.example.firstapp.imccalculator.ImcCalculatorActivity
 import com.example.firstapp.nameApp.FirstAppActivity
 import com.example.firstapp.databinding.ActivityMenuBinding
+import com.example.firstapp.superheroapp.SuperHeroListActivity
 import com.example.firstapp.todoapp.TodoActivity
 
 
@@ -30,7 +31,16 @@ class MenuActivity : AppCompatActivity() {
             navigateToTODO()
         }
 
+        binding.btnSuperHero.setOnClickListener{
+            navigateToSuperHeroApp()
+        }
 
+
+    }
+
+    private fun navigateToSuperHeroApp() {
+        val intent = Intent(this, SuperHeroListActivity::class.java)
+        startActivity(intent)
     }
 
     private fun navigateToTODO() {
