@@ -2,6 +2,7 @@ package com.example.firstapp.imccalculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.core.content.ContextCompat
 import com.example.firstapp.R
 import com.example.firstapp.databinding.ActivityImcCalculatorBinding
@@ -10,7 +11,7 @@ import java.text.DecimalFormat
 class ImcCalculatorActivity : AppCompatActivity() {
     private lateinit var binding: ActivityImcCalculatorBinding
     private var isMaleSelected = false
-    private var isFemaleSelected = false
+    private var isFemaleSelected = true
     private var currentWeight = 60
     private var currentAge = 25
     private var currentHeight = 1
@@ -26,11 +27,11 @@ class ImcCalculatorActivity : AppCompatActivity() {
 
     private fun initListeners() {
         binding.viewMale.setOnClickListener {
-            selectMale()
+            selectGender()
             setGenderColor()
         }
         binding.viewFemale.setOnClickListener {
-            selectFemale()
+            selectGender()
             setGenderColor()
         }
 
@@ -67,11 +68,15 @@ class ImcCalculatorActivity : AppCompatActivity() {
     }
 
     private fun calculateImc() {
-        val imc = currentWeight / (currentHeight)
+        val df = DecimalFormat("#.##")
+        val imc = currentWeight / (currentHeight.toDouble() / 100 * currentHeight.toDouble() / 100)
+        val result = df.format(imc)
+        binding.tvImc.text = "IMC: " + result
     }
 
-    private fun selectMale() {
+    private fun selectGender() {
         isMaleSelected = !isMaleSelected
+        isFemaleSelected = !isFemaleSelected
     }
 
     private fun selectFemale() {

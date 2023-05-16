@@ -28,12 +28,22 @@
         app:layout_constraintTop_toBottomOf="@+id/btnSaludoApp" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnTODO"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="app 2"
+        android:text="TODO APP"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnImcApp" />
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSuperHero"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="super hero app"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnTODO" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
