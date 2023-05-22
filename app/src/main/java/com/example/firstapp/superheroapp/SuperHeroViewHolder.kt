@@ -9,5 +9,7 @@ class SuperHeroViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bind(hero: SuperHeroItem){
         binding.tvSuperHeroName.text = hero.name
+        binding.ivSuperHero
+
     }
 }

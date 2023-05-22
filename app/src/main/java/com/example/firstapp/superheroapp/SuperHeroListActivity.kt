@@ -2,9 +2,7 @@ package com.example.firstapp.superheroapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.widget.SearchView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.databinding.ActivitySuperHeroListBinding
@@ -14,6 +12,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 
 class SuperHeroListActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySuperHeroListBinding
@@ -61,6 +60,8 @@ class SuperHeroListActivity : AppCompatActivity() {
                     // no se modifica la UI en una coroutine, con el metodo runOnUiThread lo hacemos en el hilo principal
                     runOnUiThread {
                         binding.pbSuperHero.isVisible = false
+                        adapter.updateList(response.superHeroes)
+                        println("-------------------${response.superHeroes}")
                     }
                 }
             } else {

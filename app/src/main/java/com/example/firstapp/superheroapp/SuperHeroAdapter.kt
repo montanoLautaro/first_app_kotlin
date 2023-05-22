@@ -10,9 +10,8 @@ class SuperHeroAdapter(var superHeroList: List<SuperHeroItem> = emptyList()) :
 
     fun updateList(superHeroList: List<SuperHeroItem>){
         this.superHeroList = superHeroList
+        notifyDataSetChanged()
     }
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SuperHeroViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         return SuperHeroViewHolder(layoutInflater.inflate(R.layout.item_superhero, parent, false))
