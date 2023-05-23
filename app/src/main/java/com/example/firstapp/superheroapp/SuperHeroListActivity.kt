@@ -1,18 +1,19 @@
 package com.example.firstapp.superheroapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.firstapp.databinding.ActivitySuperHeroListBinding
+import com.example.firstapp.superheroapp.DetailSuperHeroActivity.Companion.EXTRA_ID
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-
 
 class SuperHeroListActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySuperHeroListBinding
@@ -40,10 +41,9 @@ class SuperHeroListActivity : AppCompatActivity() {
             override fun onQueryTextChange(newText: String?): Boolean {
                 return false
             }
-
         })
 
-        adapter = SuperHeroAdapter()
+        adapter = SuperHeroAdapter(){id ->navigateToDetail(id)}
         binding.rvSuperHero.setHasFixedSize(true)
         binding.rvSuperHero.layoutManager = LinearLayoutManager(this)
         binding.rvSuperHero.adapter = adapter
@@ -61,12 +61,18 @@ class SuperHeroListActivity : AppCompatActivity() {
                     runOnUiThread {
                         binding.pbSuperHero.isVisible = false
                         adapter.updateList(response.superHeroes)
-                        println("-------------------${response.superHeroes}")
                     }
                 }
             } else {
             }
         }
+    }
+
+    private fun navigateToDetail(id: String) {
+        val intent = Intent(this, DetailSuperHeroActivity::class.java)
+        intent.putExtra(EXTRA_ID, id)
+        startActivity(intent)
+
     }
 
     private fun getRetrofit(): Retrofit {

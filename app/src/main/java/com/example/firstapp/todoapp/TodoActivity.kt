@@ -76,7 +76,7 @@ class TodoActivity : AppCompatActivity() {
     private fun initUi() {
         // RECYCLERVIEW 1
         // con funcion lambda opcion 2
-        categoriesAdapter = CategoriesAdapter(categories) {position -> updateCategories(position)}
+        categoriesAdapter = CategoriesAdapter(categories) { position -> updateCategories(position) }
         // el recylcerview de forma horizontal
         binding.rvCategories.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
@@ -85,25 +85,25 @@ class TodoActivity : AppCompatActivity() {
 
         // RECYCLERVIEW 2
         // con funcion lambda opcion 1
-        taskAdapter = TaskAdapter(tasks, {onItemSelected(it)})
+        taskAdapter = TaskAdapter(tasks, { onItemSelected(it) })
         // el recylcerview de forma horizontal, es el por defecto
         binding.rvTasks.layoutManager = LinearLayoutManager(this)
         binding.rvTasks.adapter = taskAdapter
 
     }
 
-    private fun updateCategories(position: Int){
-        categories[position].isSelected =  !categories[position].isSelected
+    private fun updateCategories(position: Int) {
+        categories[position].isSelected = !categories[position].isSelected
         categoriesAdapter.notifyItemChanged(position)
         updateTasks()
     }
 
-    private fun onItemSelected(position : Int){
+    private fun onItemSelected(position: Int) {
         tasks[position].isSelected = !tasks[position].isSelected
     }
 
     private fun updateTasks() {
-        val selectedCategories : List<TaskCategory> = categories.filter { it.isSelected }
+        val selectedCategories: List<TaskCategory> = categories.filter { it.isSelected }
         val newTasks = tasks.filter { selectedCategories.contains(it.category) }
         taskAdapter.tasks = newTasks
         taskAdapter.notifyDataSetChanged()
