@@ -2,6 +2,7 @@ package com.example.firstapp.superheroapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.TypedValue
 import android.view.View
 import com.example.firstapp.databinding.ActivityDetailSuperHeroBinding
 import com.squareup.picasso.Picasso
@@ -10,6 +11,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import kotlin.math.roundToInt
 
 class DetailSuperHeroActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDetailSuperHeroBinding
@@ -44,21 +46,26 @@ class DetailSuperHeroActivity : AppCompatActivity() {
         Picasso.get().load(body.image.url).into(binding.ivSuperHero)
         binding.tvSuperHeroName.text = body.name
         prepareStats(body.powerstats)
+        binding.tvSuperHeroRealName.text = body.biography.fullName
+        binding.tvSuperHeroPublisher.text = "Publisher: ${body.biography.publisher}"
     }
 
     private fun prepareStats(powerstats: PowerStatsResponse) {
-        updateHeight(binding.viewIntelligence, powerstats.intelligence.toInt())
-        updateHeight(binding.viewStrength, powerstats.strength.toInt())
-        updateHeight(binding.viewSpeed, powerstats.speed.toInt())
-        updateHeight(binding.viewDurability, powerstats.durability.toInt())
-        updateHeight(binding.viewPower, powerstats.power.toInt())
-        updateHeight(binding.viewCombat, powerstats.combat.toInt())
+        updateHeight(binding.viewIntelligence, powerstats.intelligence)
+        updateHeight(binding.viewStrength, powerstats.strength)
+        updateHeight(binding.viewSpeed, powerstats.speed)
+        updateHeight(binding.viewDurability, powerstats.durability)
+        updateHeight(binding.viewPower, powerstats.power)
+        updateHeight(binding.viewCombat, powerstats.combat)
+    }
+    private fun updateHeight(view: View, stat : String){
+        val params = view.layoutParams
+        params.height = pixelToDp(stat.toFloat())
+        view.layoutParams = params
     }
 
-    private fun updateHeight(view: View, stat : Int){
-        val params = view.layoutParams
-        params.height = stat
-        view.layoutParams = params
+    private fun pixelToDp(px: Float): Int{
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, px, resources.displayMetrics).roundToInt()
     }
 
     private fun getRetrofit(): Retrofit {

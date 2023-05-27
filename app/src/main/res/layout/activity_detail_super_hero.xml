@@ -41,6 +41,22 @@
                 android:textStyle="bold"
                 tools:text="PRUEBA" />
 
+            <TextView
+                android:id="@+id/tvSuperHeroRealName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textStyle="italic"
+                tools:text="PRUEBA" />
+            <TextView
+                android:id="@+id/tvSuperHeroPublisher"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="11dp"
+                android:textStyle="italic"
+                tools:text="PRUEBA"
+                android:layout_marginTop="15dp"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -111,54 +127,66 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="4dp"
                     android:layout_weight="1"
+                    android:maxLines="1"
+                    android:singleLine="true"
                     android:text="Intelligence"
                     android:textColor="@color/white"
-                    android:textSize="10dp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="4dp"
                     android:layout_weight="1"
+                    android:maxLines="1"
+                    android:singleLine="true"
                     android:text="Strength"
                     android:textColor="@color/white"
-                    android:textSize="10dp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="4dp"
                     android:layout_weight="1"
+                    android:maxLines="1"
+                    android:singleLine="true"
                     android:text="Speed"
                     android:textColor="@color/white"
-                    android:textSize="10dp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="4dp"
                     android:layout_weight="1"
+                    android:maxLines="1"
+                    android:singleLine="true"
                     android:text="Durability"
                     android:textColor="@color/white"
-                    android:textSize="10dp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="4dp"
                     android:layout_weight="1"
+                    android:maxLines="1"
+                    android:singleLine="true"
                     android:text="Power"
                     android:textColor="@color/white"
-                    android:textSize="10dp" />
+                    android:textSize="12dp" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="4dp"
                     android:layout_weight="1"
+                    android:maxLines="1"
+                    android:singleLine="true"
                     android:text="Combat"
                     android:textColor="@color/white"
-                    android:textSize="10dp" />
+                    android:textSize="12dp" />
 
 
             </LinearLayout>

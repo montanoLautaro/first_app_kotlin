@@ -14,4 +14,13 @@
     <string name="todo_category_personal">Personal</string>
     <string name="todo_category_other">Otros</string>
     <string name="todo_btn_add_task">Crear tarea</string>
+
+
+    <!-- SETTINGS-->
+    <string name="settings_darkmode">Dark Mode</string>
+    <string name="settings_darkmode_description">Activa el modo oscuro para un cambio visual.</string>
+    <string name="settings_bluetooth">Bluetooth</string>
+    <string name="settings_bluetooth_description">Activa el bluetooth del dispositivo.</string>
+    <string name="settings_volume">Volumen</string>
+    <string name="settings_vibration">Vibración</string>
 </resources>

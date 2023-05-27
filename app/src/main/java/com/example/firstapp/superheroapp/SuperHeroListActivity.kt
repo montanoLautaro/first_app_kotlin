@@ -3,6 +3,7 @@ package com.example.firstapp.superheroapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -60,7 +61,11 @@ class SuperHeroListActivity : AppCompatActivity() {
                     // no se modifica la UI en una coroutine, con el metodo runOnUiThread lo hacemos en el hilo principal
                     runOnUiThread {
                         binding.pbSuperHero.isVisible = false
-                        adapter.updateList(response.superHeroes)
+                        if(!response.superHeroes.isNullOrEmpty()){
+                            adapter.updateList(response.superHeroes)
+                        }else{
+                            Toast.makeText(this@SuperHeroListActivity,"Ha ocurrido un error", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             } else {
